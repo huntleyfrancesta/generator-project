@@ -1,6 +1,7 @@
 const getQuote = () => {
         return fetch('https://animechan.vercel.app/api/random')
             .then(res => res.json())
+
     }
     //author,character, quote//
 const makeQuoteDiv = (quote) => {
@@ -16,36 +17,26 @@ const makeQuoteDiv = (quote) => {
     div.appendChild(h4)
     const quoteContainer = document.getElementById('quote-container');
     quoteContainer.innerHTML = ""
-        // quoteContainer.appendChild(div);
+
     return div
 }
 const appendElement = (quoteDiv) => {
-        const quoteContainer = document.getElementById('quote-container')
-        quoteContainer.appendChild(quoteDiv)
-    }
-    // getQuote().then(data => {
-    //     console.log("fetching...");
-    //     console.log(data);
-    // });
-    // const handleFetchError = () => {
-    //     const quoteContainer = document.getElementById('quote-container ')
-    //     const warning = document.createElement('p')
-    //     warning.textContent = "something went wrong here..."
-    //     quoteContainer.append(warning)
-    // }
+    const quoteContainer = document.getElementById('quote-container')
+    quoteContainer.appendChild(quoteDiv)
+}
+
+
 const generateQuote = () => {
     getQuote().then((quote) => {
-            console.log(quote)
-            const quoteDiv = makeQuoteDiv(quote)
-            appendElement(quoteDiv)
-        })
-        // .catch(handleFetchError)
+
+        const quoteDiv = makeQuoteDiv(quote)
+        appendElement(quoteDiv)
+    })
+
 }
 generateQuote()
-    // getQuote().then(quote => {
-    //     const quoteDiv = makeQuoteDiv(quote)
-    //     console.log(quoteDiv)
-    // })
+
+
 document.getElementById('nextquote').addEventListener('click', (e) => {
     e.preventDefault();
     generateQuote();
